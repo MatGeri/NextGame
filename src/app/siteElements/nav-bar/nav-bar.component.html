@@ -1,0 +1,22 @@
+<div></div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light sticky">
+
+    <img src="assets/img/nextgameJustLogo.png" alt="N logo" class="navbar-logo">
+    
+    <a class="navbar-brand" routerLink="/">NEXT-GAME</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item" *ngFor="let link of links" [class.active]="isActiveUrl(link)">
+                <a class="nav-link" [routerLink]="link.href">
+                    <i class="{{link.icon}}"></i> {{link.title}}
+                </a>
+            </li>
+          </ul>
+    </div>
+
+
+
+</nav>

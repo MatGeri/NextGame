@@ -1,0 +1,24 @@
+<div class="row col-12 col-md-12">
+
+  <h1 class="display-5">Hírek</h1>
+
+  <div>
+    <button appButtonhover routerLink="/news/createArticle" type="button" class="btn btn-outline-primary btn-circle "><i
+        class="fa fa-plus"></i></button>
+  </div>
+</div>
+<hr>
+<div *ngFor="let article of news | async">
+  <div class="jumbotron">
+    <h1 class="display-4">{{article.title}}</h1>
+    <p class="lead">{{article.description}}</p>
+    <hr class="my-4">
+    <p>{{article.createDate | date:'yyyy-MM-dd'}}</p>
+    <p class="lead">
+      <button appButtonhover (click)="onDelete(article)" type="button" class="btn btn-outline-primary btn-circle biggerButtonIcon">
+        <i class="fa fa-trash"></i></button>
+      <button appButtonhover (click)="onEdit(article)" type="button" class="btn btn-outline-primary btn-circle biggerButtonIcon">
+          <i class="fa fa-pencil"></i></button>  
+    </p>
+  </div>
+</div>

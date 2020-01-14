@@ -1,0 +1,30 @@
+<div class="row col-12 col-md-12">
+  <button appButtonhover routerLink="/news" type="button" class="btn btn-outline-primary btn-circle "><i
+      class="fa fa-arrow-left"></i></button>
+</div>
+<hr>
+
+<form class="mb-4">
+  <div *ngFor="let col of cols" class="form-group">
+
+    <label for="">{{ col.title }}</label>
+    <div [ngSwitch]="col.type">
+      <input [disabled]= "!isEdit" [required]="col.required" [(ngModel)]="article[col.key]" [name]="col.key" *ngSwitchCase="'number'"
+        type="number" class="form-control">
+      <!-- <input [required]="col.required" value="date" [name]="col.key" *ngSwitchCase="'date'" type="date" class="form-control">                     -->
+      <input [required]="col.required" [(ngModel)]="article[col.key]" email [name]="col.key" *ngSwitchCase="'email'"
+        type="email" class="form-control">
+      <input [required]="col.required" [(ngModel)]="article[col.key]" [name]="col.key" *ngSwitchDefault type="text"
+        class="form-control">
+      <div *ngSwitchCase="'textarea'">
+        <textarea [(ngModel)]="article[col.key]" [name]="col.key" [required]="col.required" class="form-control"
+          rows="25"></textarea>
+      </div>
+      <input disabled id="dateInput" class="form-control" [ngModel]="createDate | date:'yyyy-MM-dd'"
+        (ngModelChange)="createDate.value=$event" [name]="col.key" *ngSwitchCase="'date'">
+    </div>
+  </div>
+  <button (click)="onSubmit()" class="btn btn-primary btn-block disabled-send-button">
+    Mentés
+  </button>
+</form>

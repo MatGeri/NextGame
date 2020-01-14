@@ -1,0 +1,15 @@
+img.navbar-logo{
+    height: 50px;
+    width: 50px;
+}
+
+a.spaceright{
+    margin-left: 5px;
+}
+
+nav.sticky {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+  }
