@@ -1,0 +1,2 @@
+# NextGame
+angular training project
