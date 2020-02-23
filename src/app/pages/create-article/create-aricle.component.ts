@@ -15,7 +15,7 @@ import { Subscription, Observable } from 'rxjs';
 export class CreateAricleComponent implements OnInit {
 
   cols : Column[] = this.config.cols.article;
-  createDate : Date = new Date;
+  createDate : string = new Date().toISOString();
   article : Article = new Article;
   isEdit : boolean = false;
   
@@ -30,9 +30,8 @@ export class CreateAricleComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log("submitted")
-    console.log(this.article.createDate)
-    this.article.createDate = this.createDate.toString();
+    console.log("submitted");
+    this.article.createDate = this.createDate;
     this.firebaseService.createArticle(this.article);
 
   }

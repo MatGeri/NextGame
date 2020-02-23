@@ -3,16 +3,16 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { Article } from '../models/article';
 import { AngularFireList } from '@angular/fire/database';
 import { Observable } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class FirebaseService {
 
-  public articles : Observable<Article[]>;
-
   constructor(private db: AngularFirestore) {
-    this.readArticle();
+   
    }
 
   createArticle(article : Article){
@@ -25,9 +25,11 @@ export class FirebaseService {
     });
   }
 
-  readArticle(){
-    this.articles = this.db.collection('articles').valueChanges() as Observable<Article[]>;
-  }  
+ 
+
+  getArticles(){
+  return this.db.collection('articles').valueChanges() as Observable<Article[]>
+  }
 
   deleteArticle(articleKey){
     return this.db.collection('articles').doc(articleKey).delete();

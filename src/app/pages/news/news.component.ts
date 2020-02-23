@@ -13,17 +13,29 @@ import { EditArticleService } from 'src/app/services/edit-article.service';
 })
 export class NewsComponent implements OnInit {
 
-  news : Observable<Article[]> = this.db.articles;
+  articlesFromDb : Observable<Article[]> = this.db.getArticles();
+  news : Array<Article>;
 
   constructor(private router: Router, private db : FirebaseService, private edit :EditArticleService) { 
-  
-  
   }
 
   ngOnInit() {
-   
-   console.log(this.news);
+   this.articlesFromDb.subscribe(
+    articles => {this.news = this.sortByDate(articles, '')}
+    );   
   }
+
+  sortByDate(arryToSort : Array<Article>, direction) {
+    return arryToSort.sort((a : Article, b : Article) => {
+        var dateA =  new Date(a.createDate);
+        var dateB =  new Date(b.createDate);
+        //default is descending
+        if (direction == 'asc') {
+            return dateA.getTime() - dateB.getTime();
+        }
+        return dateB.getTime() - dateA.getTime();
+    });
+};
 
   onDelete(article){
     console.log(article);
@@ -34,12 +46,5 @@ export class NewsComponent implements OnInit {
   onEdit(article){
     this.edit.transferArticle(article);
   }
-
-  // get sortNews() {
-  //   return this.news.sort((a, b) => {
-  //     return <any>new Date(b.CREATE_TS) - <any>new Date(a.CREATE_TS);
-  //   });
-  // }
-
 
 }
