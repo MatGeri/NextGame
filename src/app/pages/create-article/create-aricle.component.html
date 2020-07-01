@@ -24,7 +24,7 @@
         (ngModelChange)="createDate.value=$event" [name]="col.key" *ngSwitchCase="'date'">
     </div>
   </div>
-  <button (click)="onSubmit()" class="btn btn-primary btn-block disabled-send-button">
+  <button (click)="onSubmit()" class="btn btn-primary btn-block disabled-send-button" routerLink="/news">
     Mentés
   </button>
 </form>
