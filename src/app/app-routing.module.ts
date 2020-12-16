@@ -26,6 +26,10 @@ const routes: Routes = [
     component: NewsComponent
   },
   {
+    path: 'news/createArticle/:title',
+    component: CreateAricleComponent
+  },
+  {
     path: 'news/createArticle',
     component: CreateAricleComponent
   },

@@ -4,8 +4,9 @@ import { Column } from 'src/app/models/column';
 import { FirebaseService } from 'src/app/services/firebase.service';
 
 import { Article } from 'src/app/models/article';
-import { EditArticleService } from 'src/app/services/edit-article.service';
-import { Subscription, Observable } from 'rxjs';
+import { Subscription, Observable, of } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-create-aricle',
@@ -16,24 +17,38 @@ export class CreateAricleComponent implements OnInit {
 
   cols : Column[] = this.config.cols.article;
   createDate : string = new Date().toISOString();
-  article : Article = new Article;
-  isEdit : boolean = false;
-  
+  article : Article = null;
+  sub: Subscription;
+  isNew = false;
 
-  constructor( private config : ConfigService, private firebaseService : FirebaseService, private transferArticle : EditArticleService) { 
+
+  constructor( private config : ConfigService, private db : FirebaseService, private firebaseService : FirebaseService, private ar: ActivatedRoute) { 
 
   }
 
 
   ngOnInit() {
-    console.log(this.article.title)
+  this.sub = this.ar.params.pipe( switchMap(
+    params => {
+      if (params.title) {
+        return this.db.getSpecificArticle(params.title);
+      }
+      this.isNew = true;
+      return of(new Article());
+    }
+  ))
+  .subscribe(
+    article => this.article = article
+  );
   }
+    
 
-  onSubmit(){
+  onSubmit() {
     console.log("submitted");
     this.article.createDate = this.createDate;
-    this.firebaseService.createArticle(this.article);
+    this.firebaseService.createOrUpdateArticle(this.article);
 
   }
+
 
 }

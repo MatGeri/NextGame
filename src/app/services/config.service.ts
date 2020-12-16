@@ -11,8 +11,8 @@ export class ConfigService {
 
   links: {href: string, title: string, icon?: string}[] = [
     {href: '/news', title: 'Hírek', icon:"fa fa-align-left" },
-    {href: '/members', title: 'Tagok', icon:"fa fa-user-circle"},
     {href: '/popularGames', title: 'Játékok', icon:"fa fa-gamepad" },
+    {href: '/members', title: 'Felhasználók', icon:"fa fa-user-circle"},
   ];
 
   cols: {[propname: string]: Column[]} = {

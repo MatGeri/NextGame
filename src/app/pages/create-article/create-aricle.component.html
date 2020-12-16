@@ -6,7 +6,6 @@
 
 <form class="mb-4">
   <div *ngFor="let col of cols" class="form-group">
-
     <label for="">{{ col.title }}</label>
     <div [ngSwitch]="col.type">
       <input [disabled]= "!isEdit" [required]="col.required" [(ngModel)]="article[col.key]" [name]="col.key" *ngSwitchCase="'number'"

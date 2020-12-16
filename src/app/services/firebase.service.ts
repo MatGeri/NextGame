@@ -15,7 +15,7 @@ export class FirebaseService {
    
    }
 
-  createArticle(article : Article){
+  createOrUpdateArticle(article : Article){
     console.log(article)
     let name = article.title;
     return this.db.collection('articles').doc(name).set({
@@ -31,12 +31,12 @@ export class FirebaseService {
   return this.db.collection('articles').valueChanges() as Observable<Article[]>
   }
 
+  getSpecificArticle(title) {
+    return this.db.collection('articles').doc(title).valueChanges() as Observable<Article>;
+    }
+
   deleteArticle(articleKey){
     return this.db.collection('articles').doc(articleKey).delete();
-  }
-
-  updateArticle(article){
-    
   }
 
 }

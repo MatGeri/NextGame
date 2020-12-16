@@ -3,7 +3,7 @@ import { Article } from 'src/app/models/article';
 import { Router } from '@angular/router';
 import { FirebaseService } from 'src/app/services/firebase.service';
 import { Observable } from 'rxjs';
-import { EditArticleService } from 'src/app/services/edit-article.service';
+
 
 
 @Component({
@@ -16,7 +16,7 @@ export class NewsComponent implements OnInit {
   articlesFromDb : Observable<Article[]> = this.db.getArticles();
   news : Array<Article>;
 
-  constructor(private router: Router, private db : FirebaseService, private edit :EditArticleService) { 
+  constructor(private router: Router, private db : FirebaseService) { 
   }
 
   ngOnInit() {
@@ -41,10 +41,6 @@ export class NewsComponent implements OnInit {
     console.log(article);
     this.db.deleteArticle(article.title);
     
-  }
-
-  onEdit(article){
-    this.edit.transferArticle(article);
   }
 
 }

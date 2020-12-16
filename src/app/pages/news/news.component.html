@@ -17,7 +17,7 @@
     <p class="lead">
       <button appButtonhover (click)="onDelete(article)" type="button" class="btn btn-outline-primary btn-circle biggerButtonIcon">
         <i class="fa fa-trash"></i></button>
-      <button appButtonhover (click)="onEdit(article)" type="button" class="btn btn-outline-primary btn-circle biggerButtonIcon">
+      <button appButtonhover [routerLink]="['/news/createArticle', article.title]" (click)="onEdit(article)" type="button" class="btn btn-outline-primary btn-circle biggerButtonIcon">
           <i class="fa fa-pencil"></i></button>  
     </p>
   </div>
