@@ -8,13 +8,13 @@ export class ConfigService {
 
   apiUrl = 'http://localhost:3000/';
   
-
+// used for navbar links:
   links: {href: string, title: string, icon?: string}[] = [
     {href: '/news', title: 'Hírek', icon:"fa fa-align-left" },
     {href: '/popularGames', title: 'Játékok', icon:"fa fa-gamepad" },
     {href: '/members', title: 'Felhasználók', icon:"fa fa-user-circle"},
   ];
-
+//used for create article form:
   cols: {[propname: string]: Column[]} = {
     article: [
       {key: 'title', title: 'Cím', required: true},
@@ -27,6 +27,8 @@ export class ConfigService {
     return new Date;
   }
 
+  constructor() { 
+  
+  }
 
-  constructor() { }
 }
