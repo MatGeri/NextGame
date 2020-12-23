@@ -1,2 +1,23 @@
-<p>members works!</p>
+<div class="row col-12 col-md-12">
+
+    <h1 class="display-5">Jelenleg online discordon:</h1>
+
+  <table class="col-12 table table-hover">
+    <thead>
+       <tr>
+          <th>Név</th>
+          <th>Játék</th>
+          <th>Valami</th>
+       </tr>
+    </thead>
+    <tbody>
+       <tr *ngFor="let member of onlineMembers">
+          <td>{{ member.username }}</td>
+          <td *ngIf="member.game">{{ member.game.name }}</td>
+          <td *ngIf="!member.game">Nem játszik</td>
+          <td>valami</td>
+       </tr>
+    </tbody>
+ </table>
+  </div>
 

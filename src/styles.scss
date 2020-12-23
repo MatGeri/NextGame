@@ -9,6 +9,7 @@
     line-height: 1.42857;
     margin-left: 5px;
     margin-top: 5px;
+
 }
 
 .biggerButtonIcon {
@@ -18,4 +19,21 @@
 body{
     background-color: #fff;
 }
+
+.btn-outline-primary{
+   color: #a91b0c;
+   border-color:  #a91b0c;
+
+}
+
+.btn-primary:hover{
+    background-color: #a91b0c;
+    border-color: #a91b0c;
+}
+
+// hr{
+//     color:#a91b0c;
+//     border-color: #a91b0c;
+// }
+
 
