@@ -1,16 +1,16 @@
 {
     "version": "0.1.0",
-    "configurations": [
+    "configurations": [ 
         {
             "name": "Launch localhost",
-            "type": "chrome",
+            "type": "pwa-chrome",
             "request": "launch",
             "url": "http://localhost:4200/",
             "webRoot": "D:/workspaces/NextGit/"
         },
         {
             "name": "Launch index.html",
-            "type": "chrome",
+            "type": "pwa-chrome",
             "request": "launch",
             "file": "D:/workspaces/NextGit/"
         },

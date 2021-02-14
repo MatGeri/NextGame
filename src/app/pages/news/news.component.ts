@@ -38,7 +38,7 @@ export class NewsComponent implements OnInit {
 };
 
   onDelete(article){
-    console.log(article);
+    console.log('törölve: ' + article);
     this.db.deleteArticle(article.title);
     
   }

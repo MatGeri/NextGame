@@ -18,6 +18,7 @@
 
 body{
     background-color: #fff;
+
 }
 
 .btn-outline-primary{
@@ -31,9 +32,14 @@ body{
     border-color: #a91b0c;
 }
 
-// hr{
-//     color:#a91b0c;
-//     border-color: #a91b0c;
-// }
+ div > hr{
+     color:#a91b0c;
+     border-color: #a91b0c;
+ }
+
+ div > h1{
+  
+    margin-bottom: 20px;
+}
 
 

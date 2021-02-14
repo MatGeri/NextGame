@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Article } from '../models/article';
-import { AngularFireList } from '@angular/fire/database';
 import { Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+
 
 
 @Injectable({
